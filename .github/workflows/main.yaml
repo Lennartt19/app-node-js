@@ -6,15 +6,5 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-      
-      - name: Preparar entorno node
-        uses: ./.github/actions/setup-nodeapp
-        with:
-          node-version: 24
-    
-      - name: Correr tests
-        run: npm test
+  build-and-push:
+    uses: ./.github/workflows/build-and-push.yaml
