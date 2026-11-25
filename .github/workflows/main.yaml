@@ -14,7 +14,7 @@ jobs:
       - name: Preparar entorno node
         uses: ./.github/actions/setup-nodeapp
         with:
-          node-version: 26
+          node-version: 24
     
       - name: Correr tests
         run: npm test
