@@ -15,6 +15,7 @@ runs:
       with:
         node-version: ${{ inputs.node-version }}
         cache: 'npm'
+        cache-dependency-path: package-lock.json
 
     - name: Verificar versión de Node.js
       shell: bash
@@ -22,7 +23,7 @@ runs:
 
     - name: Instalar dependencies
       shell: bash
-      run: npm install
+      run: npm ci
     
     - name: Verificar que las dependencias estén instaladas
       shell: bash
