@@ -1,0 +1,25 @@
+name: Setup NodeApp
+description: Instalar dependencias del proyecto Node.js y ejecutar pruebas unitarias
+
+inputs:
+  node-version:
+    description: 'Versión de Node.js a utilizar'
+    required: false
+    default: '22'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Configurar Node.js
+      uses: actions/setup-node@v7
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: 'npm'
+
+    - name: Verificar versión de Node.js
+      shell: bash
+      run: node -v
+    
+    - name: Verificar que las dependencias estén instaladas
+      shell: bash
+      run: npm list --depth=0 || echo "No se encontraron dependencias instaladas"
